@@ -9,55 +9,198 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
 
-namespace PIDRegulator {
-	public partial class Form1 : Form {
+namespace PIDRegulator
+{
+    public partial class Form1 : Form
+    {
 
-		SerialPort port = new SerialPort();
-		public Form1() {
-			InitializeComponent();
-		}
+        SerialPort port = new SerialPort();
 
-		private void UpdateButton_Click(object sender, EventArgs e) {
-			UpdatePortList();
-		}
+        public Form1()
+        {
+            InitializeComponent();
+            port.ErrorReceived += Port_ErrorReceived;
+            port.DataReceived += Port_DataReceived;
+            UpdatePortList();
+            PortListComboBox.SelectedIndex = 0;
+        }
 
-		private void UpdatePortList() {
-			PortListComboBox.Items.Clear();
-			foreach (string name in SerialPort.GetPortNames()) {
-				PortListComboBox.Items.Add(name);
-			}
-		}
+        string lastData = "";
+        private void Port_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
 
-		private void ConnectButton_Click(object sender, EventArgs e) {
-			port.PortName = PortListComboBox.SelectedItem.ToString();
-			port.BaudRate = 57600;
-			port.Open();
-		}
+            if (chart1.InvokeRequired)
+            {
+                chart1.Invoke((Action)(() => UpdateChart()));
+            } else
+            {
+                UpdateChart();
+            }
+        }
 
-		private void ValueChanged(object sender, EventArgs e) {
-			NumericUpDown nu = sender as NumericUpDown;
-			char c = 'e';
-			if(port.IsOpen) {
-				switch(nu.Name) {
-					case "KpNumeric":
-						c = 'p';
-						break;
-					case "KiNumeric":
-						c = 'i';
-						break;
-					case "KdNumeric":
-						c = 'd';
-						break;
-					case "OffsetUpDown":
-						c = 'o';
-						break;
-					case "LimitNumeric":
-						c = 'l';
-						break;
-				}
-			}
-			port.Write(c.ToString());
-			port.WriteLine(nu.Value.ToString());
-		}
-	}
+        void UpdateChart()
+        {
+            try
+            {
+                lastData = port.ReadLine();
+                chart1.Series.FindByName("OutputSeries").Points.Add(Convert.ToDouble(lastData.Split('\t')[0]));
+                chart1.Series.FindByName("AngleSeries").Points.Add(Convert.ToDouble(lastData.Split('\t')[1]));
+                chart1.ChartAreas[0].RecalculateAxesScale();
+                if (chart1.Series.FindByName("OutputSeries").Points.Count > 500)
+                {
+                    chart1.Series.FindByName("OutputSeries").Points.RemoveAt(0);
+                }
+                if (chart1.Series.FindByName("AngleSeries").Points.Count > 500)
+                {
+                    chart1.Series.FindByName("AngleSeries").Points.RemoveAt(0);
+                }
+            } catch(Exception ex)
+            {
+
+            }
+        }
+
+        private void Port_ErrorReceived(object sender, SerialErrorReceivedEventArgs e)
+        {
+            port.Close();
+            if (ConnectButton.InvokeRequired)
+            {
+
+                ConnectButton.Invoke((Action)(() => UpdateText(ConnectButton, "Connect")));
+                return;
+            }
+            else
+            {
+                UpdateText(ConnectButton, "Connect");
+            }
+        }
+
+        void UpdateText(Button b, string s)
+        {
+            b.Text = s;
+        }
+
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+            UpdatePortList();
+        }
+
+        private void UpdatePortList()
+        {
+            PortListComboBox.Items.Clear();
+            foreach (string name in SerialPort.GetPortNames())
+            {
+                PortListComboBox.Items.Add(name);
+            }
+        }
+
+        private void ConnectButton_Click(object sender, EventArgs e)
+        {
+            Button b = sender as Button;
+            if (!port.IsOpen)
+            {
+                port.PortName = PortListComboBox.SelectedItem.ToString();
+                port.BaudRate = 57600;
+                port.Open();
+                b.Text = "Disconnect";
+            }
+            else
+            {
+                port.Close();
+                b.Text = "Connect";
+            }
+        }
+
+        private void ValueChanged(object sender, EventArgs e)
+        {
+            NumericUpDown nu = sender as NumericUpDown;
+            char c = 'e';
+            if (port.IsOpen)
+            {
+                switch (nu.Name)
+                {
+                    case "KpNumeric":
+                        c = 'p';
+                        break;
+                    case "KiNumeric":
+                        c = 'i';
+                        break;
+                    case "KdNumeric":
+                        c = 'd';
+                        break;
+                    case "OffsetUpDown":
+                        c = 'o';
+                        break;
+                    case "LimitNumeric":
+                        c = 'l';
+                        break;
+                }
+            }
+            SendData(c, (double)nu.Value);
+        }
+
+        void SendData(char type, double value)
+        {
+            if (port.IsOpen)
+            {
+                port.Write(type.ToString());
+                port.Write(value.ToString());
+            }
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+           
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void ButtonUp_MouseDown(object sender, MouseEventArgs e)
+        {
+            Button b = sender as Button;
+            switch (b.Text)
+            {
+                case "Down":
+                    SendData('o', (double)OffsetUpDown.Value + 5);
+                    break;
+                case "Up":
+                    SendData('o', (double)OffsetUpDown.Value - 5);
+                    break;
+                case "Left":
+                    SendData('s', 100);
+                    break;
+                case "Right":
+                    SendData('s', -100);
+                    break;
+            }
+        }
+
+        private void ButtonUp_MouseUp(object sender, MouseEventArgs e)
+        {
+            Button b = sender as Button;
+            switch (b.Text)
+            {
+                case "Down":
+                    SendData('o', (double)OffsetUpDown.Value);
+                    break;
+                case "Up":
+                    SendData('o', (double)OffsetUpDown.Value);
+                    break;
+                case "Left":
+                    SendData('s', 0);
+                    break;
+                case "Right":
+                    SendData('s', 0);
+                    break;
+            }
+        }
+    }
 }
