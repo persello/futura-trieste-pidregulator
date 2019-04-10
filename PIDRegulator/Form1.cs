@@ -22,7 +22,7 @@ namespace PIDRegulator
             port.ErrorReceived += Port_ErrorReceived;
             port.DataReceived += Port_DataReceived;
             UpdatePortList();
-            PortListComboBox.SelectedIndex = 0;
+            //PortListComboBox.SelectedIndex = 0;
         }
 
         string lastData = "";
@@ -144,7 +144,7 @@ namespace PIDRegulator
             if (port.IsOpen)
             {
                 port.Write(type.ToString());
-                port.Write(value.ToString());
+                port.Write(value.ToString().PadRight(9));
             }
         }
 
@@ -175,10 +175,10 @@ namespace PIDRegulator
                     SendData('o', (double)OffsetUpDown.Value - 5);
                     break;
                 case "Left":
-                    SendData('s', 100);
+                    SendData('s', 10000);
                     break;
                 case "Right":
-                    SendData('s', -100);
+                    SendData('s', -10000);
                     break;
             }
         }
@@ -202,5 +202,13 @@ namespace PIDRegulator
                     break;
             }
         }
-    }
+
+		private void DefaultButton_Click(object sender, EventArgs e) {
+			LimitNumeric.Value = 52700;
+			KpNumeric.Value = 5000;
+			KiNumeric.Value = 500000;
+			KdNumeric.Value = 2;
+			OffsetUpDown.Value = 2;
+		}
+	}
 }
