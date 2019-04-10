@@ -23,10 +23,10 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-			System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-			System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-			System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+			System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+			System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+			System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
 			this.ConnectButton = new System.Windows.Forms.Button();
 			this.PortListComboBox = new System.Windows.Forms.ComboBox();
 			this.KpNumeric = new System.Windows.Forms.NumericUpDown();
@@ -57,7 +57,7 @@
 			// ConnectButton
 			// 
 			this.ConnectButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.ConnectButton.Location = new System.Drawing.Point(671, 72);
+			this.ConnectButton.Location = new System.Drawing.Point(570, 72);
 			this.ConnectButton.Name = "ConnectButton";
 			this.ConnectButton.Size = new System.Drawing.Size(117, 24);
 			this.ConnectButton.TabIndex = 0;
@@ -69,7 +69,7 @@
 			// 
 			this.PortListComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.PortListComboBox.FormattingEnabled = true;
-			this.PortListComboBox.Location = new System.Drawing.Point(671, 12);
+			this.PortListComboBox.Location = new System.Drawing.Point(570, 12);
 			this.PortListComboBox.Name = "PortListComboBox";
 			this.PortListComboBox.Size = new System.Drawing.Size(117, 24);
 			this.PortListComboBox.TabIndex = 1;
@@ -83,7 +83,7 @@
             0,
             0,
             131072});
-			this.KpNumeric.Location = new System.Drawing.Point(668, 316);
+			this.KpNumeric.Location = new System.Drawing.Point(567, 316);
 			this.KpNumeric.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -103,7 +103,7 @@
             0,
             0,
             131072});
-			this.KiNumeric.Location = new System.Drawing.Point(668, 366);
+			this.KiNumeric.Location = new System.Drawing.Point(567, 366);
 			this.KiNumeric.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -123,7 +123,7 @@
             0,
             0,
             131072});
-			this.KdNumeric.Location = new System.Drawing.Point(668, 416);
+			this.KdNumeric.Location = new System.Drawing.Point(567, 416);
 			this.KdNumeric.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -138,7 +138,7 @@
 			// 
 			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(668, 296);
+			this.label1.Location = new System.Drawing.Point(567, 296);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(25, 17);
 			this.label1.TabIndex = 5;
@@ -148,7 +148,7 @@
 			// 
 			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(668, 346);
+			this.label2.Location = new System.Drawing.Point(567, 346);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(20, 17);
 			this.label2.TabIndex = 6;
@@ -158,7 +158,7 @@
 			// 
 			this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(668, 396);
+			this.label3.Location = new System.Drawing.Point(567, 396);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(25, 17);
 			this.label3.TabIndex = 7;
@@ -167,7 +167,7 @@
 			// UpdateButton
 			// 
 			this.UpdateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.UpdateButton.Location = new System.Drawing.Point(671, 42);
+			this.UpdateButton.Location = new System.Drawing.Point(570, 42);
 			this.UpdateButton.Name = "UpdateButton";
 			this.UpdateButton.Size = new System.Drawing.Size(117, 24);
 			this.UpdateButton.TabIndex = 8;
@@ -180,29 +180,29 @@
 			this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			chartArea1.Name = "ChartArea1";
-			this.chart1.ChartAreas.Add(chartArea1);
-			legend1.Name = "Legend1";
-			legend1.Position.Auto = false;
-			legend1.Position.Height = 10.82353F;
-			legend1.Position.Width = 21.41757F;
-			legend1.Position.X = 75.58244F;
-			legend1.Position.Y = 3F;
-			this.chart1.Legends.Add(legend1);
+			chartArea2.Name = "ChartArea1";
+			this.chart1.ChartAreas.Add(chartArea2);
+			legend2.Name = "Legend1";
+			legend2.Position.Auto = false;
+			legend2.Position.Height = 10.82353F;
+			legend2.Position.Width = 21.41757F;
+			legend2.Position.X = 75.58244F;
+			legend2.Position.Y = 3F;
+			this.chart1.Legends.Add(legend2);
 			this.chart1.Location = new System.Drawing.Point(12, 12);
 			this.chart1.Name = "chart1";
 			this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
-			series1.ChartArea = "ChartArea1";
-			series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-			series1.Legend = "Legend1";
-			series1.Name = "OutputSeries";
-			series2.ChartArea = "ChartArea1";
-			series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-			series2.Legend = "Legend1";
-			series2.Name = "AngleSeries";
-			this.chart1.Series.Add(series1);
-			this.chart1.Series.Add(series2);
-			this.chart1.Size = new System.Drawing.Size(650, 429);
+			series3.ChartArea = "ChartArea1";
+			series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+			series3.Legend = "Legend1";
+			series3.Name = "OutputSeries";
+			series4.ChartArea = "ChartArea1";
+			series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+			series4.Legend = "Legend1";
+			series4.Name = "AngleSeries";
+			this.chart1.Series.Add(series3);
+			this.chart1.Series.Add(series4);
+			this.chart1.Size = new System.Drawing.Size(549, 429);
 			this.chart1.TabIndex = 9;
 			this.chart1.Text = "chart1";
 			this.chart1.Click += new System.EventHandler(this.chart1_Click);
@@ -216,7 +216,7 @@
             0,
             0,
             131072});
-			this.OffsetUpDown.Location = new System.Drawing.Point(668, 271);
+			this.OffsetUpDown.Location = new System.Drawing.Point(567, 271);
 			this.OffsetUpDown.Maximum = new decimal(new int[] {
             45,
             0,
@@ -236,7 +236,7 @@
 			// 
 			this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(668, 251);
+			this.label4.Location = new System.Drawing.Point(567, 251);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(46, 17);
 			this.label4.TabIndex = 11;
@@ -246,7 +246,7 @@
 			// 
 			this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(668, 206);
+			this.label5.Location = new System.Drawing.Point(567, 206);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(37, 17);
 			this.label5.TabIndex = 13;
@@ -260,7 +260,7 @@
             0,
             0,
             0});
-			this.LimitNumeric.Location = new System.Drawing.Point(668, 226);
+			this.LimitNumeric.Location = new System.Drawing.Point(567, 226);
 			this.LimitNumeric.Maximum = new decimal(new int[] {
             400000,
             0,
@@ -274,7 +274,7 @@
 			// ButtonUp
 			// 
 			this.ButtonUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.ButtonUp.Location = new System.Drawing.Point(899, 144);
+			this.ButtonUp.Location = new System.Drawing.Point(798, 144);
 			this.ButtonUp.Name = "ButtonUp";
 			this.ButtonUp.Size = new System.Drawing.Size(75, 68);
 			this.ButtonUp.TabIndex = 15;
@@ -286,7 +286,7 @@
 			// ButtonRight
 			// 
 			this.ButtonRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.ButtonRight.Location = new System.Drawing.Point(980, 218);
+			this.ButtonRight.Location = new System.Drawing.Point(879, 218);
 			this.ButtonRight.Name = "ButtonRight";
 			this.ButtonRight.Size = new System.Drawing.Size(75, 68);
 			this.ButtonRight.TabIndex = 16;
@@ -298,7 +298,7 @@
 			// ButtonLeft
 			// 
 			this.ButtonLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.ButtonLeft.Location = new System.Drawing.Point(818, 218);
+			this.ButtonLeft.Location = new System.Drawing.Point(717, 218);
 			this.ButtonLeft.Name = "ButtonLeft";
 			this.ButtonLeft.Size = new System.Drawing.Size(75, 68);
 			this.ButtonLeft.TabIndex = 17;
@@ -310,7 +310,7 @@
 			// ButtonDown
 			// 
 			this.ButtonDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.ButtonDown.Location = new System.Drawing.Point(899, 292);
+			this.ButtonDown.Location = new System.Drawing.Point(798, 292);
 			this.ButtonDown.Name = "ButtonDown";
 			this.ButtonDown.Size = new System.Drawing.Size(75, 68);
 			this.ButtonDown.TabIndex = 18;
@@ -322,7 +322,7 @@
 			// DefaultButton
 			// 
 			this.DefaultButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.DefaultButton.Location = new System.Drawing.Point(668, 172);
+			this.DefaultButton.Location = new System.Drawing.Point(567, 172);
 			this.DefaultButton.Name = "DefaultButton";
 			this.DefaultButton.Size = new System.Drawing.Size(117, 24);
 			this.DefaultButton.TabIndex = 19;
@@ -334,7 +334,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1075, 453);
+			this.ClientSize = new System.Drawing.Size(974, 453);
 			this.Controls.Add(this.DefaultButton);
 			this.Controls.Add(this.ButtonDown);
 			this.Controls.Add(this.ButtonLeft);
@@ -356,7 +356,7 @@
 			this.Controls.Add(this.ConnectButton);
 			this.MinimumSize = new System.Drawing.Size(800, 500);
 			this.Name = "Form1";
-			this.Text = "Form1";
+			this.Text = "PID Regulator";
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
 			this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
 			((System.ComponentModel.ISupportInitialize)(this.KpNumeric)).EndInit();
