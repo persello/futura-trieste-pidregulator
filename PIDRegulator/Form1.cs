@@ -100,7 +100,7 @@ namespace PIDRegulator
             if (!port.IsOpen)
             {
                 port.PortName = PortListComboBox.SelectedItem.ToString();
-                port.BaudRate = 57600;
+                port.BaudRate = 115200;
                 port.Open();
                 b.Text = "Disconnect";
             }
@@ -169,10 +169,10 @@ namespace PIDRegulator
             switch (b.Text)
             {
                 case "Down":
-                    SendData('o', (double)OffsetUpDown.Value + 5);
+                    SendData('o', (double)OffsetUpDown.Value + (double)ControlAngleNumericUpDown.Value);
                     break;
                 case "Up":
-                    SendData('o', (double)OffsetUpDown.Value - 5);
+                    SendData('o', (double)OffsetUpDown.Value - (double)ControlAngleNumericUpDown.Value);
                     break;
                 case "Left":
                     SendData('s', 10000);
